@@ -35,6 +35,10 @@ This is a very powerful tool for linking and passing information between differe
 **Example**: Cannot read properties of undefined (reading ‘0’)\
 **Solution**: Undefined variable in if statement condition. Try to figure out which variable is undefined and resolve it. This can also caused by using the wrong term (“var” VS “const”)
 
+3. AttributeError: Wrong function name\
+**Example**: AttributeError: TrialType has no attribute (or key) 'sendExperimentData'\
+**Solution**: This error is evoked by calling a function that doesn’t exist. Of note, if you have a nested loop, current version of PsychoPy(2023+/2024) has a bug of calling this[Name of outside loop].sendExperimentData(). You should manually comment this line out.
+
 ## Debugging for PsychoPy Builder
 **General suggestions**
 -	You may have a testing variable to skip some trials in the testing mode
