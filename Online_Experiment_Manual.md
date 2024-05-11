@@ -7,10 +7,15 @@
 This is a very powerful tool for linking and passing information between different platforms.
 ### Tutorials
 [Youtube tutorials: an overview](https://www.youtube.com/watch?v=WpTjVQH-jzw)
+
 [Assign randomized ID on Qualtrics](https://www.qualtrics.com/support/survey-platform/common-use-cases-rc/assigning-randomized-ids-to-respondents/)
+
 [Link two Pavlovia experiments/ Link toward Pavlovia](https://discourse.psychopy.org/t/daisy-chaining-between-2-psychopy-pavlovia-experiments/32750)
+
 [Link toward/ from Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/standard-elements/passing-information-through-query-strings/)
+
 [Qualtrics primer (e.g., ResponseID, …)](https://docs.google.com/presentation/d/e/2PACX-1vShEbK65azEWNKDoT4Z8n9raYYg_1Ael0-jHNyiIm7o9_PvBRVTE7w7fOb7WFC_moqaALa6qhxQ_Hcy/pub?start=false&loop=false&delayms=10000&pli=1&slide=id.g4cadf9cf8d_0_0)
+
 [Link Qualtrics toward/from SONA](https://www.sona-systems.com/help/qualtrics/)
 
 ## PsychoPy: sync online
@@ -49,8 +54,10 @@ This is a very powerful tool for linking and passing information between differe
 
 ## PsychoJS (from PsychoPy)
 [Getting started](https://psychopy.github.io/psychojs/index.html)
+
 [PsychoJS API](https://psychopy.github.io/psychojs/module-core.PsychoJS.html)
 
 ## jsPsych
 [Tutorial](https://www.jspsych.org/7.3/)
+
 [Document of plugins](https://www.jspsych.org/7.3/plugins/html-keyboard-response/)
