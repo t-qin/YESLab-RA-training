@@ -28,3 +28,4 @@ Week11: 6.10 - 6.16
 
 ## Skills: “I really want to learn these skills!”
 Put them here 😎
+MatLab maybe? I wanna try to see some neuroscience stuff and see if I'm interested. -- Tianhao Qin
