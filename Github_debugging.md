@@ -18,6 +18,14 @@ git diff HEAD~2 yourfilename # check the difference between the current state an
 ```bash
 git checkout HEAD~2 yourfilename # revert the file to the 2nd last commit
 ```
+
+Eg. If you put some files in to .gitignore, then you do `git pull --rebase origin main`. Those files will be likely to removed when git automatically dealing with conflict!!! Then you might need to:
+```bash
+git log -- <yourfilename> # to see during which commit did you delete the file
+git checkout <commit hash> -- <yourfilename> # an example of commit hash can be cfb90ea932623b906a52724207a931c09c6e3312
+```
+Don't worry then you will see the file back in your local repo.
+
 But be careful when you do not specify the filename!!!
 ```bash
 git checkout f22b25e # revert the whole repo to the commit with the hash f22b25e
@@ -177,3 +185,103 @@ git config --global pull.ff only
 
 By setting one of these configurations, future git pull commands will default to the behavior you've specified, eliminating the need to specify how to handle divergent branches each time. After pulling and resolving any conflicts (if necessary), you should be able to push your changes to the remote repository without any further issues.
 
+## SSH key Setup
+When generating an SSH key using `ssh-keygen`, you can specify the filename and location to save the key. Here’s how to do it:
+
+### Step-by-Step Guide
+
+1. **Open Terminal**:
+   Open a terminal on your macOS.
+
+2. **Run `ssh-keygen` Command**:
+   Use the following command to start the key generation process:
+
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   ```
+
+   Replace `your_email@example.com` with your actual email address.
+
+3. **Specify the Filename**:
+   When prompted for the file in which to save the key, you can specify a custom filename and location. For example, to save the key as `my_custom_key` in the `.ssh` directory, enter:
+
+   ```plaintext
+   Enter file in which to save the key (/Users/your_username/.ssh/id_rsa): /Users/your_username/.ssh/my_custom_key
+   ```
+
+   Replace `your_username` with your actual username.
+
+4. **Complete the Key Generation**:
+   You’ll be prompted to enter a passphrase. You can either enter a passphrase for additional security or leave it empty and press `Enter` for no passphrase.
+
+   ```plaintext
+   Enter passphrase (empty for no passphrase):
+   Enter same passphrase again:
+   ```
+
+### Example:
+
+Here’s a complete example of the process:
+
+```plaintext
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/your_username/.ssh/id_rsa): /Users/your_username/.ssh/my_custom_key
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /Users/your_username/.ssh/my_custom_key.
+Your public key has been saved in /Users/your_username/.ssh/my_custom_key.pub.
+The key fingerprint is:
+SHA256:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX your_email@example.com
+The key's randomart image is:
++---[RSA 4096]----+
+| .o..   .        |
+|  .+o . . .      |
+| ..=o . o o      |
+|..o= o   .       |
+|ooE . . S        |
+| o .. o = .      |
+|  ..  o B        |
+|   .o + o        |
+|   .+o.o.        |
++----[SHA256]-----+
+```
+
+### Step 4: Update SSH Config File
+
+After generating the key, update your `~/.ssh/config` file to use this new key:
+
+1. **Open the SSH config file**:
+
+    ```bash
+    nano ~/.ssh/config
+    ```
+
+2. **Add an entry for your remote server**:
+
+    ```plaintext
+    Host myserver
+        HostName remote_server
+        User user
+        IdentityFile ~/.ssh/my_custom_key
+    ```
+
+    Replace `myserver` with a name you want to use for the connection, `remote_server` with the server’s address, `user` with your username, and `my_custom_key` with the filename you specified.
+
+3. **Save and exit the file** (`Ctrl + O`, `Enter`, `Ctrl + X`).
+
+### Step 5: Copy the SSH Key to Your Remote Server
+
+Copy your public key to the remote server:
+
+```bash
+ssh-copy-id -i ~/.ssh/my_custom_key.pub user@remote_server
+```
+
+Now, you should be able to connect to your remote server without entering a password:
+
+```bash
+ssh myserver
+```
+
+Using this method, you can customize the filename and location of your SSH key pair, making it easier to manage multiple keys for different servers.
